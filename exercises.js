@@ -638,3 +638,123 @@ function number_unique(number) {
   }
   return true;
 }
+
+function dumpList(list) {
+  for (var i = 0; i < list.length; i++) {
+    if (Array.isArray(list[i])) {
+      dumpList(list[i]);
+    } else {
+      console.log(list[i]);
+    }
+  }
+}
+
+function printNums(maxNum) {
+  console.log(maxNum)
+  if (maxNum === 20) return 20;
+  else return printNums(maxNum + 1);
+}
+
+function sumOfNums(maxNum) {
+  if (maxNum === 0) return 0;
+  else {
+    return maxNum + sumOfNums(maxNum - 1);
+  }
+}
+
+function evenOrOdd(minNum, maxNum) {
+  if (minNum > maxNum) return;
+  else {
+    if (minNum % 2 === 0) {
+      console.log("Even:", minNum);
+      return evenOrOdd(minNum + 1, maxNum);
+    } else {
+      console.log("Odd:", minNum);
+      return evenOrOdd(minNum + 1, maxNum);
+    }
+  }
+}
+
+function isPalindrome(word) {
+  if (word.length === 0 || word.length === 1) {
+    return true;
+  } else if (word[0] === word.slice(-1)) {
+    return isPalindrome(word.slice(1, -1));
+  } else {
+    return false;
+  }
+}
+
+function toPow(number, power) {
+  if (power === 1) {
+    return number;
+  } else {
+    return toPow(number * 2, power - 1)
+  }
+}
+
+function hailstoneSequence(number) {
+  console.log(number);
+  if (number === 1) {
+    return 1;
+  } else if (number % 2 === 0) {
+    number = number / 2;
+    return hailstoneSequence(number)
+  } else {
+    number = number * 3 + 1;
+    return hailstoneSequence(number);
+  }
+}
+
+function countAbc(string) {
+  if (string.length < 3) {
+    return 0;
+  } else {
+    var substring = string.slice(0, 3);
+    if (substring === "abc" || substring === "aba") {
+      return countAbc(string.slice(2, string.length)) + 1;
+    } else {
+      return countAbc(string.slice(1, string.length));
+    }
+  }
+}
+
+function count11(string) {
+  if (string.length < 2) {
+    return 0;
+  } else {
+    var substring = string.slice(0, 2);
+    if (substring === "11") {
+      return count11(string.slice(3, string.length)) + 1;
+    } else {
+      return count11(string.slice(1, string.length));
+    }
+  }
+}
+
+function stringClean(string) {
+  if (string.length === 0) {
+    return string;
+  } else {
+    var substring = string.slice(0, 2);
+    if (substring[0] === substring[1]) {
+      return stringClean(string.slice(1, string.length));
+    } else {
+      return substring[0] + stringClean(string.slice(1, string.length));
+    }
+  }
+}
+
+function countHi(string) {
+  if (string.length < 3) {
+    return 0;
+  } else {
+    var substring = string.slice(0, 3);
+    if (substring.slice(1, 3) === "hi" && substring[0] !== "x") {
+      return countHi(string.slice(3, string.length)) + 1;
+  } else {
+    return countHi(string.slice(3, string.length));
+  }
+  }
+}
+
